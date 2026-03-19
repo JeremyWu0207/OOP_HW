@@ -5,9 +5,9 @@ using namespace std;
 int change_coin(vector<int> &coin, int m) {
     vector<long> dp(m+1, 0);
     dp[0] = 1;
-    
-    for (auto &c : coin) {
-        for (int i = c; i < m;i++) {
+
+    for (int c : coin) {
+        for (int i = c; i <= m;i++) {
             dp[i] += dp[i - c];
         }
     }
@@ -21,8 +21,8 @@ int main() {
         int money;
         cin >> money;
         if (money == 0) break;
-        cout << change_coin(coin, money) << endl;;
+        cout << change_coin(coin, money) << endl << endl;
     }
-    
+
     return 0;
 }
