@@ -1,0 +1,28 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int check(string id) {
+    if (id.length() > 10) return 0;
+    if (id[0] < 'A' || id[0] > 'Z') {
+        return 0;
+    }
+    if (id[1] < '0' || id[1] > '1') {
+        return 0;
+    }
+    for (int i = 2; i < 10; i++) {
+        if (id[i] < '0' || id[i] > '9') {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    string id;
+    cout << "Please enter an ID numbers： ";
+    cin >> id;
+    if (check(id)) cout << "Correct" << endl ;
+    else cout <<"Incorrect" << endl;
+}
