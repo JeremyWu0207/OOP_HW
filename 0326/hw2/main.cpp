@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
 	Time t;
 	cout << "Initial Time is 00:00:00 AM" << endl; 
 	cout << "Please set time: ";
