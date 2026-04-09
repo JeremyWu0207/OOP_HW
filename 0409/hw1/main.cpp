@@ -25,25 +25,31 @@ int main() {
     }
 
     while (true) {
-        // 注意：這裡刻意保留了助教的錯字以符合範例輸出格式
         cout << "\n1-Addition\n2-Subtraction\n3-Mutiplicaion\n4-Divition\n5-Exit\n";
         int choice;
         cin >> choice;
 
+        if (choice == 5) {
+            break;
+        }
+
+        // 依靠傳遞指標記憶體位置 (&A, &B) 進行運算
         if (choice == 1) {
             C.add(&A, &B);
-            C.print();
         } else if (choice == 2) {
             C.sub(&A, &B);
-            C.print();
         } else if (choice == 3) {
             C.multiple(&A, &B);
-            C.print();
         } else if (choice == 4) {
             C.divide(&A, &B);
-            C.print();
-        } else if (choice == 5) {
-            break;
+        }
+        
+        // 運算結束後，直接在外部存取 C 的屬性來輸出 (不使用 print 函式)
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                cout << C.mat[i][j] << (j == N - 1 ? "" : " ");
+            }
+            cout << "\n";
         }
     }
 
