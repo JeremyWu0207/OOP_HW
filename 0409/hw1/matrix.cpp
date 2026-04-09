@@ -10,7 +10,7 @@ matrix::matrix(int n) {
 void matrix::add(matrix* A, matrix* B) {
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
-            mat[i][j] = A->mat[i][j] + B->mat[i][j]; // 直接寫 mat 代表自己的變數
+            mat[i][j] = A->mat[i][j] + B->mat[i][j];
 }
 
 void matrix::sub(matrix* A, matrix* B) {
@@ -35,7 +35,6 @@ void matrix::divide(matrix* A, matrix* B) {
     long long det = 0;
     long long adj[3][3] = {0};
 
-    // 計算行列式與伴隨矩陣
     if (N == 2) {
         det = A->mat[0][0] * A->mat[1][1] - A->mat[0][1] * A->mat[1][0];
         adj[0][0] = A->mat[1][1];
@@ -59,12 +58,10 @@ void matrix::divide(matrix* A, matrix* B) {
     }
 
     if (det == 0) {
-        // 如果無解 (det = 0)，輸出全 0 矩陣
         for (int i = 0; i < N; ++i)
             for (int j = 0; j < N; ++j)
                 mat[i][j] = 0;
     } else {
-        // C = A^-1 * B = (adj * B) / det
         for (int i = 0; i < N; ++i) {
             for (int j = 0; j < N; ++j) {
                 long long sum = 0;
