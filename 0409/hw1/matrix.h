@@ -8,7 +8,6 @@ public:
 
     matrix(int n = 2);
     
-    // 依題目要求定義四個運算 method
     void add(matrix* A, matrix* B);
     void sub(matrix* A, matrix* B);
     void multiple(matrix* A, matrix* B);
