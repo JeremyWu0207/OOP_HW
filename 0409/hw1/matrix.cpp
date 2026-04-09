@@ -1,7 +1,4 @@
 #include "matrix.h"
-#include <iostream>
-
-using namespace std;
 
 matrix::matrix(int n) {
     N = n;
@@ -10,25 +7,16 @@ matrix::matrix(int n) {
             mat[i][j] = 0;
 }
 
-void matrix::print() {
-    for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < N; ++j) {
-            cout << mat[i][j] << (j == N - 1 ? "" : " ");
-        }
-        cout << "\n";
-    }
-}
-
 void matrix::add(matrix* A, matrix* B) {
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
-            this->mat[i][j] = A->mat[i][j] + B->mat[i][j];
+            mat[i][j] = A->mat[i][j] + B->mat[i][j]; // 直接寫 mat 代表自己的變數
 }
 
 void matrix::sub(matrix* A, matrix* B) {
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < N; ++j)
-            this->mat[i][j] = A->mat[i][j] - B->mat[i][j];
+            mat[i][j] = A->mat[i][j] - B->mat[i][j];
 }
 
 void matrix::multiple(matrix* A, matrix* B) {
@@ -38,7 +26,7 @@ void matrix::multiple(matrix* A, matrix* B) {
             for (int k = 0; k < N; ++k) {
                 sum += A->mat[i][k] * B->mat[k][j];
             }
-            this->mat[i][j] = sum;
+            mat[i][j] = sum;
         }
     }
 }
@@ -74,7 +62,7 @@ void matrix::divide(matrix* A, matrix* B) {
         // 如果無解 (det = 0)，輸出全 0 矩陣
         for (int i = 0; i < N; ++i)
             for (int j = 0; j < N; ++j)
-                this->mat[i][j] = 0;
+                mat[i][j] = 0;
     } else {
         // C = A^-1 * B = (adj * B) / det
         for (int i = 0; i < N; ++i) {
@@ -83,7 +71,7 @@ void matrix::divide(matrix* A, matrix* B) {
                 for (int k = 0; k < N; ++k) {
                     sum += adj[i][k] * B->mat[k][j];
                 }
-                this->mat[i][j] = sum / det; 
+                mat[i][j] = sum / det; 
             }
         }
     }
