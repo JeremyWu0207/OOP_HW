@@ -6,7 +6,6 @@ using namespace std;
 int main() {
     int h, m;
     
-    // 持續輸入，若讀取到 -1 則結束程式
     while (cin >> h) {
         if (h == -1) {
             break;
@@ -29,7 +28,6 @@ int main() {
             diff = 360.0 - diff;
         }
 
-        // 四捨五入並轉為整數輸出，避免印出小數點
         cout << (int)round(diff) << "\n";
     }
 
